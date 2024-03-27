@@ -1,7 +1,5 @@
-import { AuthContextProvider } from '@/lib/context/authContext'
 import './globals.css'
 import { Inter } from 'next/font/google'
-import { Suspense } from 'react'
 import UtilContextProvider from '@/lib/context/utilContext'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -17,11 +15,9 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         <div className="min-h-screen flex items-center justify-center">
           <div className="absolute h-80 w-full mx-auto p-4 bg-theme-gradient -translate-y-1/2 z-0"></div>
-          {/* <AuthContextProvider> */}
-            <UtilContextProvider>
-              {children}
-            </UtilContextProvider>
-          {/* </AuthContextProvider> */}
+          <UtilContextProvider>
+            {children}
+          </UtilContextProvider>
         </div>
       </body>
     </html>

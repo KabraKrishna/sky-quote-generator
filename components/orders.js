@@ -1,11 +1,10 @@
-import { IoWallet, IoCall, IoPerson, IoBusiness, IoCreate, IoTrash, IoPrint, IoLocation, IoDocument, IoClose, IoRefresh, IoAddCircle } from "react-icons/io5";
+import { IoCall, IoPerson, IoPrint, IoDocument, IoClose, IoAddCircle } from "react-icons/io5";
 import { useContext, useLayoutEffect, useRef, useState } from "react";
 import { useReactToPrint } from "react-to-print";
-import Image from "next/image";
 import Input from "./utils/input";
 import { UtilContext } from "@/lib/context/utilContext";
 import { Dialog, DialogBody, IconButton } from "@material-tailwind/react";
-import { getItemByArticleId, formatAmount, getImageUrl } from "@/lib/data/items";
+import { formatAmount, getImageUrl } from "@/lib/data/items";
 import moment from "moment";
 
 

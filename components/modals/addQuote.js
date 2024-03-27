@@ -3,7 +3,6 @@
 import { useState, useLayoutEffect } from "react";
 import { DialogBody, DialogHeader, DialogFooter } from "@material-tailwind/react";
 import { IoClose } from "react-icons/io5";
-import Image from "next/image";
 import Input from "../utils/input";
 
 export default function AddQuote({ mode, onClose, article, onAdd }) {

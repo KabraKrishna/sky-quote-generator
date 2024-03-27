@@ -1,5 +1,4 @@
-import { IoCloseOutline, IoSearchOutline } from "react-icons/io5";
-import SearchDropDown from "./searchDropdown";
+import {IoSearchOutline } from "react-icons/io5";
 
 export default function Search({ classNames, iconSize, onQueryChange }) {
 
@@ -20,9 +19,6 @@ export default function Search({ classNames, iconSize, onQueryChange }) {
                 className="mx-2 px-2 py-1 max-w-[86%] bg-transparent focus:outline-none"
                 onChange={onInputChange}
             />
-            {/* <a className="btn btn-ghost btn-xs btn-circle text-primary hidden hover:bg-primary hover:text-white peer-focus:block">
-                <IoCloseOutline size={18} />
-            </a> */}
         </div>
     )
 

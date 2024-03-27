@@ -19,7 +19,6 @@ export default function Item({ children, icon, value, onItemClick }) {
                 <div className="flex-1 mx-1 flex flex-col items-start justify-evenly">
                     <div className="w-full flex items-center justify-between">
                         <span className="text-xs text-secondary-focus group-hover:text-white">{value.articleId}</span>
-                        {/* <span className="text-xs text-primary-focus group-hover:text-white">MRP</span> */}
                     </div>
                     <div className="w-full flex items-center justify-between">
                         <span
