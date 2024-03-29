@@ -33,6 +33,7 @@ export default function Orders(props) {
     const onCancel = () => setIsPrintPreview(false);
 
     const openDrawer = () => setDrawerOpen(true);
+
     const closeDrawer = (isDelete) => {
 
         if (isDelete && deleteItemId) {
@@ -124,7 +125,7 @@ export default function Orders(props) {
         else totals.discount = (totals.offer * (+discount) / 100)
 
         return (<>
-            <div className="w-full h-[27rem] bg-gray-200 rounded-b-lg flex flex-col items-center justify-start no-scrollbar overflow-y-scroll p-2">
+            <div className="w-full h-[27rem] bg-gray-200 rounded-b-lg flex flex-col items-center justify-start no-scrollbar overflow-y-scroll p-2 mb-1">
                 {/* Bill Layout */}
                 <div ref={billRef} className="dc-container w-full h-auto bg-white flex flex-col items-center justify-between p-2">
 
@@ -211,12 +212,26 @@ export default function Orders(props) {
                                     </div>
                                     <div className="w-6/12 flex-col items-center justify-start">
                                         <div>
-                                            <span className="font-bold text-xs">ArticleID:</span>
-                                            <span className="font-normal text-xs ml-1">{item.articleId}</span>
+                                            {
+                                                item.articleId.includes("H.") ? (<>
+                                                    <span className="font-bold text-xs">Model:</span>
+                                                    <span className="font-normal text-xs ml-1">{item.model}</span>
+                                                </>) : (<>
+                                                    <span className="font-bold text-xs">ArticleID:</span>
+                                                    <span className="font-normal text-xs ml-1">{item.articleId}</span>
+                                                </>)
+                                            }
                                         </div>
                                         <div>
-                                            <span className="font-bold text-xs">Model:</span>
-                                            <span className="font-normal text-xs ml-1">{item.model}</span>
+                                            {
+                                                item.articleId.includes("H.") ? (<>
+                                                    <span className="font-bold text-xs">Size (mm):</span>
+                                                    <span className="font-normal text-xs ml-1">{item.size}</span>
+                                                </>) : (<>
+                                                    <span className="font-bold text-xs">Model:</span>
+                                                    <span className="font-normal text-xs ml-1">{item.model}</span>
+                                                </>)
+                                            }
                                         </div>
                                         <div>
                                             <p className="font-light text-[9px] text-justify leading-3">{item.description}</p>
@@ -491,7 +506,7 @@ export default function Orders(props) {
 
             {
                 isPrintPreview ? getPrintPreview() :
-                    <div className="w-full h-[27rem] bg-gray-200 rounded-b-lg flex flex-col items-center justify-start no-scrollbar overflow-y-scroll p-2">
+                    <div className="w-full h-[27rem] bg-gray-200 rounded-b-lg flex flex-col items-center justify-start no-scrollbar overflow-y-scroll p-2 mb-1">
                         {/* Bill Layout */}
                         <div className="dc-container w-full h-auto bg-white flex flex-col items-center justify-between p-2">
 
@@ -604,12 +619,26 @@ export default function Orders(props) {
                                             </div>
                                             <div className="w-5/12 flex-col items-center justify-start">
                                                 <div>
-                                                    <span className="font-bold text-xs">ArticleID:</span>
-                                                    <span className="font-normal text-xs ml-1">{item.articleId}</span>
+                                                    {
+                                                        item.articleId.includes("H.") ? (<>
+                                                            <span className="font-bold text-xs">Model:</span>
+                                                            <span className="font-normal text-xs ml-1">{item.model}</span>
+                                                        </>) : (<>
+                                                            <span className="font-bold text-xs">ArticleID:</span>
+                                                            <span className="font-normal text-xs ml-1">{item.articleId}</span>
+                                                        </>)
+                                                    }
                                                 </div>
                                                 <div>
-                                                    <span className="font-bold text-xs">Model:</span>
-                                                    <span className="font-normal text-xs ml-1">{item.model}</span>
+                                                    {
+                                                        item.articleId.includes("H.") ? (<>
+                                                            <span className="font-bold text-xs">Size (mm):</span>
+                                                            <span className="font-normal text-xs ml-1">{item.size}</span>
+                                                        </>) : (<>
+                                                            <span className="font-bold text-xs">Model:</span>
+                                                            <span className="font-normal text-xs ml-1">{item.model}</span>
+                                                        </>)
+                                                    }
                                                 </div>
                                                 <div>
                                                     <p className="font-light text-[9px] text-justify leading-3">{item.description}</p>
@@ -644,8 +673,6 @@ export default function Orders(props) {
                         </div>
 
                     </div>
-
-
             }
 
             <Dialog
@@ -655,7 +682,7 @@ export default function Orders(props) {
             >
                 <DialogBody className="bg-blue-gray-50">
                     <div className="w-full flex-col-center">
-                        <div className="text-sm w-full flex flex-row items-center justify-start">
+                        <div className="text-sm w-full flex flex-row items-center justify-start p-2">
                             Do you really want to remove this Article ?
                         </div>
                         <div className="text-sm w-full flex flex-row items-center justify-end">
