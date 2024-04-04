@@ -20,7 +20,7 @@ export default function Header() {
                     {/* <div className="w-[2rem] h-2[rem] flex-col-center bg-indigo-500 bg-blend-color">
                         <img src="/sky-logo.png" className="w-full h-full mix-blend-screen" />
                     </div> */}
-                    <span className="text-2xl font-bold text-white font-serif ml-2">Sky Studio</span>
+                    <span className="text-2xl font-bold text-white font-serif ml-2 opacity-0">Sky Studio</span>
                 </div>
             </div>
             <div className="navbar-center hidden lg:flex">

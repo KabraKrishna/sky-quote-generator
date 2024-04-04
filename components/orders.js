@@ -135,11 +135,11 @@ export default function Orders(props) {
                         <div className="w-full flex items-center justify-between">
                             
                             <div className="w-[100px] flex-col-center">
-                                <img alt="SS_LOGO" src='/hindware-logo-1.png' className="w-[70px] h-[70px]"/>
+                                <img alt="SS_LOGO" src='/hindware-logo.png' className="w-[70px] h-[70px]"/>
                             </div>
                             <span className="ml-4 text-5xl font-serif font-extrabold text-black">Sky Studio</span>
                             <div className="w-[100px] flex-col-center mr-3">
-                                <img alt="SS_LOGO" src='/haffele-logo-1.png' className="w-[100px] h-[70px]"/>
+                                <img alt="SS_LOGO" src='/hafele-logo.png' className="w-[100px] h-[70px]"/>
                             </div>
                         </div>
                         <span className="mt-4 mb-2 text-xs text-black">
