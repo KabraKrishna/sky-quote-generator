@@ -131,15 +131,15 @@ export default function Orders(props) {
 
                     {/* Header */}
 
-                    <div className="dc-header w-full flex-col-center py-2 border-b border-black">
+                    <div className="dc-header w-full flex-col-center py-2 border-b border-black px-4">
                         <div className="w-full flex items-center justify-between">
                             
-                            <div className="w-[100px] flex-col-center">
-                                <img alt="SS_LOGO" src='/hindware-logo.png' className="w-[70px] h-[70px]"/>
+                            <div className="w-auto flex-col-center">
+                                <img alt="SS_LOGO" src='/hindware-logo-new.png' className="w-[100px]"/>
                             </div>
-                            <span className="ml-4 text-5xl font-serif font-extrabold text-black">Sky Studio</span>
-                            <div className="w-[100px] flex-col-center mr-3">
-                                <img alt="SS_LOGO" src='/hafele-logo.png' className="w-[100px] h-[70px]"/>
+                            <span className="text-5xl font-serif font-extrabold text-black">Sky Studio</span>
+                            <div className="w-auto flex-col-center">
+                                <img alt="SS_LOGO" src='/hafele-logo-new.jpg' className="w-[100px]"/>
                             </div>
                         </div>
                         <span className="mt-4 mb-2 text-xs text-black">
