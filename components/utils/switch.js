@@ -3,7 +3,7 @@ import { useRef, useState } from "react"
 
 export default function Switch({ onToggle }) {
 
-    const screens = ["HAFFELE", "HINDWARE"];
+    const screens = ["HAFELE", "HINDWARE"];
     const toggleRef = useRef(undefined);
 
     const [toggleState, setToggleState] = useState(true);

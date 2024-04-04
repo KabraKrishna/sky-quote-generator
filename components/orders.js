@@ -132,11 +132,15 @@ export default function Orders(props) {
                     {/* Header */}
 
                     <div className="dc-header w-full flex-col-center py-2 border-b border-black">
-                        <div className="w-full flex-center">
-                            {/* <div className="w-[76px] h-[76px] rounded-lg flex-col-center">
-                                <Image alt="SS_LOGO" src='/images/535_43_273.png' className="mix-blend-multiply" width={100} height={100} />
-                            </div> */}
+                        <div className="w-full flex items-center justify-between">
+                            
+                            <div className="w-[100px] flex-col-center">
+                                <img alt="SS_LOGO" src='/hindware-logo-1.png' className="w-[70px] h-[70px]"/>
+                            </div>
                             <span className="ml-4 text-5xl font-serif font-extrabold text-black">Sky Studio</span>
+                            <div className="w-[100px] flex-col-center mr-3">
+                                <img alt="SS_LOGO" src='/haffele-logo-1.png' className="w-[100px] h-[70px]"/>
+                            </div>
                         </div>
                         <span className="mt-4 mb-2 text-xs text-black">
                             Shop No. 13/14, Chetan Trade Center Opp. SFS School, Ch. Sambhajinagar - 431001
