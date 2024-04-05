@@ -22,7 +22,7 @@ export default function Orders(props) {
     const [quoteItems, setQuoteItems] = useState([]);
     const [isDrawerOpen, setDrawerOpen] = useState(false);
     const [deleteItemId, setDeleteItemId] = useState(undefined);
-    const [isCash, setIsCash] = useState(0);
+    const [isCash, setIsCash] = useState(true);
     const [discount, setDiscount] = useState('');
 
     useLayoutEffect(() => {
@@ -121,7 +121,7 @@ export default function Orders(props) {
             totals.offer += (+item.qty * +item.offer)
         })
 
-        if (isCash === "0") totals.discount = +discount
+        if (isCash) totals.discount = +discount
         else totals.discount = (totals.offer * (+discount) / 100)
 
         return (<>
@@ -270,7 +270,7 @@ export default function Orders(props) {
                             <div className="w-2/12 flex-col-center"></div>
                             <div className="w-6/12 flex-col-center">DISCOUNT</div>
                             <div className="w-1/12 flex-col-center"></div>
-                            <div className="w-1/12 flex-col-center">{isCash === "0" ? '' : '(' + discount + '% )'}</div>
+                            <div className="w-1/12 flex-col-center">{isCash ? '( ' + discount + ' )' : '(' + discount + '% )'}</div>
                             <div className="w-1/12 flex-col-center">{formatAmount(totals.discount)}</div>
                         </div>
 
@@ -576,8 +576,8 @@ export default function Orders(props) {
                                         <select value={isCash}
                                             onChange={handleDrop}
                                             className={inputStyle}>
-                                            <option value="0">CASH</option>
-                                            <option value="1">PERCENT</option>
+                                            <option value={true}>CASH</option>
+                                            <option value={false}>PERCENT</option>
                                         </select>
                                     </div>
                                     <div className="w-3/12">
