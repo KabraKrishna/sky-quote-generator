@@ -22,7 +22,7 @@ export default function Orders(props) {
     const [quoteItems, setQuoteItems] = useState([]);
     const [isDrawerOpen, setDrawerOpen] = useState(false);
     const [deleteItemId, setDeleteItemId] = useState(undefined);
-    const [isCash, setIsCash] = useState(true);
+    const [isCash, setIsCash] = useState(0);
     const [discount, setDiscount] = useState('');
 
     useLayoutEffect(() => {
@@ -86,10 +86,6 @@ export default function Orders(props) {
         pageStyle: pageStyle
     })
 
-    const handleDrop = (e) => {
-        setIsCash(e.target.value);
-    }
-
     const clearScreen = () => {
 
         setCompany('');
@@ -97,7 +93,7 @@ export default function Orders(props) {
         setPhone('');
         setQuoteDate('');
         setValidity('');
-        setIsCash(true);
+        setIsCash(0);
         setDiscount('');
         clearContext();
         setQuoteItems([]);
@@ -121,7 +117,7 @@ export default function Orders(props) {
             totals.offer += (+item.qty * +item.offer)
         })
 
-        if (isCash) totals.discount = +discount
+        if (isCash === 0) totals.discount = +discount
         else totals.discount = (totals.offer * (+discount) / 100)
 
         return (<>
@@ -270,7 +266,7 @@ export default function Orders(props) {
                             <div className="w-2/12 flex-col-center"></div>
                             <div className="w-6/12 flex-col-center">DISCOUNT</div>
                             <div className="w-1/12 flex-col-center"></div>
-                            <div className="w-1/12 flex-col-center">{isCash ? '( ' + discount + ' )' : '(' + discount + '% )'}</div>
+                            <div className="w-1/12 flex-col-center">{isCash === 0 ? '' : '(' + discount + '% )'}</div>
                             <div className="w-1/12 flex-col-center">{formatAmount(totals.discount)}</div>
                         </div>
 
@@ -573,11 +569,11 @@ export default function Orders(props) {
                                             className={labelStyle}>
                                             Discount Type
                                         </label>
-                                        <select value={isCash}
-                                            onChange={handleDrop}
+                                        <select defaultValue={isCash}
+                                            onChange={e => setIsCash(parseInt(e.target.value))}
                                             className={inputStyle}>
-                                            <option value={true}>CASH</option>
-                                            <option value={false}>PERCENT</option>
+                                            <option value={0}>CASH</option>
+                                            <option value={1}>PERCENT</option>
                                         </select>
                                     </div>
                                     <div className="w-3/12">
