@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useLayoutEffect } from "react";
+import { useState, useLayoutEffect, useEffect } from "react";
 import { DialogBody, DialogHeader, DialogFooter } from "@material-tailwind/react";
 import { IoClose } from "react-icons/io5";
 import Input from "../utils/input";
@@ -12,12 +12,20 @@ export default function AddQuote({ mode, onClose, article, onAdd }) {
     const [qty, setQty] = useState(1);
     const [size, setSize] = useState(0);
     const [offer, setOffer] = useState(0);
+    const [discount, setDiscount] = useState(0);
     const [selectedArticle, setSelectedArticle] = useState({});
 
     useLayoutEffect(() => {
         setMrp(article.mrp);
         setSelectedArticle(article);
     }, [article])
+
+    useEffect(() => {
+
+        if(discount) {
+            addDiscount()
+        }
+    },[discount])
 
     const onSave = () => {
 
@@ -29,6 +37,18 @@ export default function AddQuote({ mode, onClose, article, onAdd }) {
             size: +size
         };
         onAdd(addObject);
+
+    }
+
+    const addDiscount = () => {
+
+        if (!mrp) return;
+
+        let parsedMrp = parseInt(mrp)
+
+        let calculatedPrice = parsedMrp - ((parsedMrp * parseInt(discount)) / 100);
+
+        setOffer(Math.round(calculatedPrice))
 
     }
 
@@ -53,7 +73,7 @@ export default function AddQuote({ mode, onClose, article, onAdd }) {
                         <Input
                             id="qty" lableText="Quantity"
                             type="text" onChange={setQty}
-                            placeholder="MRP"
+                            placeholder="quantity"
                             value={qty} />
 
                         <Input
@@ -63,11 +83,19 @@ export default function AddQuote({ mode, onClose, article, onAdd }) {
                             value={size} />
                     </div>
 
-                    <Input
-                        id="mrp" lableText="MRP"
-                        type="text" onChange={setMrp}
-                        placeholder="MRP"
-                        value={mrp} />
+                    <div className="w-full flex items-center justify-between">
+                        <Input
+                            id="mrp" lableText="MRP"
+                            type="text" onChange={setMrp}
+                            placeholder="MRP"
+                            value={mrp} />
+
+                        <Input
+                            id="discount" lableText="Discount"
+                            type="text" onChange={setDiscount}
+                            placeholder="discount(%)"
+                            value={discount} />
+                    </div>
 
                     <Input
                         id="offer" lableText="Retail Offer"

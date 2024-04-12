@@ -1,4 +1,4 @@
-import { IoCall, IoPerson, IoPrint, IoDocument, IoClose, IoAddCircle } from "react-icons/io5";
+import { IoCall, IoPerson, IoPrint, IoDocument, IoClose, IoAddCircle, IoLocate, IoMail, IoPin, IoLocation } from "react-icons/io5";
 import { useContext, useLayoutEffect, useRef, useState } from "react";
 import { useReactToPrint } from "react-to-print";
 import Input from "./utils/input";
@@ -24,9 +24,12 @@ export default function Orders(props) {
     const [deleteItemId, setDeleteItemId] = useState(undefined);
     const [isCash, setIsCash] = useState(0);
     const [discount, setDiscount] = useState('');
+    const [isHafeleHeaderActive, setIsHafeleHeaderActive] = useState(true);
+    const [showOldHeader, setShowOldHeader] = useState(false);
 
     useLayoutEffect(() => {
         setQuoteItems(context.itemList)
+        setIsHafeleHeaderActive(context.isHaffeleActive)
     }, [context])
 
     const onPrintPreview = () => setIsPrintPreview(true);
@@ -107,6 +110,86 @@ export default function Orders(props) {
         openDrawer();
     }
 
+    const getOldHeader = () => {
+
+        return (<>
+            <div className="dc-header w-full flex-col-center py-2 border-b border-black px-4">
+                <div className="w-full flex items-center justify-between">
+
+                    <div className="w-auto flex-col-center">
+                        <img alt="SS_LOGO" src='/hafele-logo-new.png' className="w-[100px]" />
+                    </div>
+
+                    <span className="text-4xl font-serif font-extrabold text-black">Sky Studio</span>
+
+                    <div className="w-auto flex-col-center">
+                        <img alt="SS_LOGO" src='/hindware-logo-new.png' className="w-[100px]" />
+                    </div>
+
+                </div>
+                <span className="mt-2 mb-1 text-xs text-black">
+                    Shop No. 13/14, Chetan Trade Center Opp. SFS School, Ch. Sambhajinagar - 431001
+                </span>
+                <div className="w-full flex flex-row items-center justify-center divide-x text-xs">
+                    <span className="text-black mx-2">Mob.
+                        <span className="text-black font-medium ml-1">9767448038</span>
+                    </span>
+                    <span className="text-black pl-2 border-indigo-900">EMAIL.
+                        <span className="text-black font-medium ml-1">shravankabra14@gmail.com</span>
+                    </span>
+                </div>
+            </div>
+        </>)
+    }
+
+    const getLayoutHeader = () => {
+
+        return (<>
+            <div className="dc-header w-full flex items-center justify-between py-2 border-b border-black px-4">
+                <div className="w-8/12 flex flex-col items-start">
+                    <span className="text-4xl font-serif font-extrabold text-black">Sky Studio</span>
+                    <div className="w-auto flex-col-center text-[10px]">
+                        <span className="my-1text-black">
+                            Shop No. 13/14, Chetan Trade Center Opp. SFS School, Ch. Sambhajinagar - 431001
+                        </span>
+                        <div className="w-full flex flex-row items-center justify-start divide-x">
+                            <span className="text-black mr-2">Mob.
+                                <span className="text-black font-medium ml-1">9767448038</span>
+                            </span>
+                            <span className="text-black pl-2 border-indigo-900">EMAIL.
+                                <span className="text-black font-medium ml-1">shravankabra14@gmail.com</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div className="w-4/12 h-full flex items-start justify-end">
+
+                    {
+                        showOldHeader ? (
+                            isHafeleHeaderActive ? (<>
+                                <div className="w-auto flex-col-center">
+                                    <img alt="SS_LOGO" src='/hafele-logo-new.png' className="w-[100px]" />
+                                </div>
+                            </>) : (<>
+                                <div className="w-auto flex-col-center">
+                                    <img alt="SS_LOGO" src='/hindware-logo-new.png' className="w-[100px]" />
+                                </div>
+                            </>)
+                        ) : (<>
+                            <img alt="SS_LOGO" src='/hafele-logo-new.png' className="w-[100px] mr-2" />
+                            <img alt="SS_LOGO" src='/hindware-logo-new.png' className="w-[100px]" />
+                        </>)
+                    }
+
+
+                    {/* {
+                        
+                    } */}
+                </div>
+            </div>
+        </>)
+    }
+
     const getPrintPreview = () => {
 
         const totals = { mrp: 0, qty: 0, offer: 0, discount: 0 }
@@ -127,29 +210,7 @@ export default function Orders(props) {
 
                     {/* Header */}
 
-                    <div className="dc-header w-full flex-col-center py-2 border-b border-black px-4">
-                        <div className="w-full flex items-center justify-between">
-                            
-                            <div className="w-auto flex-col-center">
-                                <img alt="SS_LOGO" src='/hindware-logo-new.png' className="w-[100px]"/>
-                            </div>
-                            <span className="text-5xl font-serif font-extrabold text-black">Sky Studio</span>
-                            <div className="w-auto flex-col-center">
-                                <img alt="SS_LOGO" src='/hafele-logo-new.jpg' className="w-[100px]"/>
-                            </div>
-                        </div>
-                        <span className="mt-4 mb-2 text-xs text-black">
-                            Shop No. 13/14, Chetan Trade Center Opp. SFS School, Ch. Sambhajinagar - 431001
-                        </span>
-                        <div className="w-full flex flex-row items-center justify-center divide-x">
-                            <span className="text-xs text-black mx-2">Mob.
-                                <span className="text-black font-medium ml-1">9767448038</span>
-                            </span>
-                            <span className="text-xs text-black pl-2 border-indigo-900">EMAIL.
-                                <span className="text-black font-medium ml-1">shravankabra14@gmail.com</span>
-                            </span>
-                        </div>
-                    </div>
+                    {getLayoutHeader()}
 
                     {/* Customer Details */}
 
@@ -436,19 +497,19 @@ export default function Orders(props) {
                                     hover:border-white/80
                                     hover:text-white
                                     font-medium 
-                                    rounded-3xl text-sm 
+                                    rounded-full text-sm 
                                     px-2 py-1 text-center 
                                     inline-flex items-center 
                                     me-1">
                     <IoAddCircle size={18} className="mr-1" />
-                    Create New Quote
+                    New Quote
                 </button>
 
                 <div className="w-auto px-1 h-8 flex items-center justify-between space-x-1">
                     {
                         isPrintPreview ?
                             <>
-                                <button type="button" onClick={handlePrint}
+                                <button type="button" onClick={() => setShowOldHeader((c) => !c)} title="Toggle Header"
                                     className="
                                     text-gray-900 
                                     bg-gray-100
@@ -461,10 +522,24 @@ export default function Orders(props) {
                                     px-2 py-1 text-center 
                                     inline-flex items-center 
                                     me-1">
-                                    <IoPrint size={18} className="mr-1" />
-                                    Print
+                                    {showOldHeader ? "All Headers" : 'Custom Header'}
                                 </button>
-                                <button type="button" onClick={onCancel}
+                                <button type="button" onClick={handlePrint} title="Print"
+                                    className="
+                                    text-gray-900 
+                                    bg-gray-100
+                                    hover:bg-transparent
+                                    hover:border
+                                    hover:border-white/80
+                                    hover:text-white
+                                    font-medium 
+                                    rounded-full text-sm 
+                                    p-1 text-center 
+                                    inline-flex items-center 
+                                    me-1">
+                                    <IoPrint size={18} />
+                                </button>
+                                <button type="button" onClick={onCancel} title="Cancel"
                                     className="
                                     ml-2
                                     text-gray-900 
@@ -474,12 +549,11 @@ export default function Orders(props) {
                                     hover:border-white/80
                                     hover:text-white
                                     font-medium 
-                                    rounded-3xl text-sm 
-                                    px-2 py-1 text-center 
+                                    rounded-full text-sm 
+                                    p-1 text-center 
                                     inline-flex items-center 
                                     me-1">
-                                    <IoClose size={18} className="mr-1" />
-                                    Cancel
+                                    <IoClose size={18} />
                                 </button>
                             </> :
                             <>
@@ -591,82 +665,75 @@ export default function Orders(props) {
                             {/* bill details */}
                             <div className="dc-content w-full flex flex-col items-center px-5 py-2">
 
-                                <div
-                                    className="
-                                w-full flex items-center 
-                                justify-between text-xs px-2 py-1 mb-1 rounded-lg
-                                font-bold text-black bg-blue-gray-100/50">
-                                    <div className="w-[4%] flex-col-center">#</div>
-                                    <div className="w-3/12 flex-col-center">MODEL</div>
-                                    <div className="w-5/12 flex-col-center">DESC</div>
-                                    <div className="w-1/12 flex-col-center">MRP</div>
-                                    <div className="w-1/12 flex-col-center">QTY.</div>
-                                    <div className="w-1/12 flex-col-center">OFFER</div>
-                                    <div className="w-[4%] flex-col-center"></div>
-                                </div>
-
                                 {
-                                    quoteItems && quoteItems.length > 0 ? quoteItems.map((item, index) => (
+                                    quoteItems && quoteItems.length > 0 ? (<>
                                         <div
-                                            key={index}
-                                            className="dc-item border-b
-                                                    w-full flex items-center 
-                                                    justify-between text-sm p-2 mb-1
-                                                  text-black">
-                                            <div className="w-[4%] flex-col-center">{index + 1}</div>
-                                            <div className="w-3/12 flex-col-center">
-                                                <img src={getImageUrl(item.articleId)} className="w-9/12" />
-                                            </div>
-                                            <div className="w-5/12 flex-col items-center justify-start">
-                                                <div>
-                                                    {
-                                                        item.articleId.includes("H.") ? (<>
-                                                            <span className="font-bold text-xs">Model:</span>
-                                                            <span className="font-normal text-xs ml-1">{item.model}</span>
-                                                        </>) : (<>
-                                                            <span className="font-bold text-xs">ArticleID:</span>
-                                                            <span className="font-normal text-xs ml-1">{item.articleId}</span>
-                                                        </>)
-                                                    }
-                                                </div>
-                                                <div>
-                                                    {
-                                                        item.articleId.includes("H.") ? (<>
-                                                            <span className="font-bold text-xs">Size (mm):</span>
-                                                            <span className="font-normal text-xs ml-1">{item.size}</span>
-                                                        </>) : (<>
-                                                            <span className="font-bold text-xs">Model:</span>
-                                                            <span className="font-normal text-xs ml-1">{item.model}</span>
-                                                        </>)
-                                                    }
-                                                </div>
-                                                <div>
-                                                    <p className="font-light text-[9px] text-justify leading-3">{item.description}</p>
-                                                </div>
-                                            </div>
-                                            <div className="w-1/12 flex-col-center text-xs">{formatAmount(item.mrp)}</div>
-                                            <div className="w-1/12 flex-col-center text-xs">{item.qty}</div>
-                                            <div className="w-1/12 flex-col-center text-xs">{formatAmount(item.offer)}</div>
-                                            <div className="w-[4%] flex-col-center">
-                                                <IconButton size="sm" data-articleid={item.articleId} onClick={() => removeItem(item.articleId)}
-                                                    className="flex-col-center 
-                                                        rounded-full hover:border hover:border-blue" variant="text" color="blue">
-                                                    <IoClose size={18} />
-                                                </IconButton>
-                                            </div>
+                                            className="
+                                            w-full flex items-center 
+                                            justify-between text-xs px-2 py-1 mb-1 rounded-lg
+                                            font-bold text-black bg-blue-gray-100/50">
+                                            <div className="w-[4%] flex-col-center">#</div>
+                                            <div className="w-3/12 flex-col-center">MODEL</div>
+                                            <div className="w-5/12 flex-col-center">DESC</div>
+                                            <div className="w-1/12 flex-col-center">MRP</div>
+                                            <div className="w-1/12 flex-col-center">QTY.</div>
+                                            <div className="w-1/12 flex-col-center">OFFER</div>
+                                            <div className="w-[4%] flex-col-center"></div>
                                         </div>
-                                    )) : ''
+                                        {
+                                            quoteItems.map((item, index) => (
+                                                <div
+                                                    key={index}
+                                                    className="dc-item border-b
+                                                            w-full flex items-center 
+                                                            justify-between text-sm p-2 mb-1
+                                                          text-black">
+                                                    <div className="w-[4%] flex-col-center">{index + 1}</div>
+                                                    <div className="w-3/12 flex-col-center">
+                                                        <img src={getImageUrl(item.articleId)} className="w-9/12" />
+                                                    </div>
+                                                    <div className="w-5/12 flex-col items-center justify-start">
+                                                        <div>
+                                                            {
+                                                                item.articleId.includes("H.") ? (<>
+                                                                    <span className="font-bold text-xs">Model:</span>
+                                                                    <span className="font-normal text-xs ml-1">{item.model}</span>
+                                                                </>) : (<>
+                                                                    <span className="font-bold text-xs">ArticleID:</span>
+                                                                    <span className="font-normal text-xs ml-1">{item.articleId}</span>
+                                                                </>)
+                                                            }
+                                                        </div>
+                                                        <div>
+                                                            {
+                                                                item.articleId.includes("H.") ? (<>
+                                                                    <span className="font-bold text-xs">Size (mm):</span>
+                                                                    <span className="font-normal text-xs ml-1">{item.size}</span>
+                                                                </>) : (<>
+                                                                    <span className="font-bold text-xs">Model:</span>
+                                                                    <span className="font-normal text-xs ml-1">{item.model}</span>
+                                                                </>)
+                                                            }
+                                                        </div>
+                                                        <div>
+                                                            <p className="font-light text-[9px] text-justify leading-3">{item.description}</p>
+                                                        </div>
+                                                    </div>
+                                                    <div className="w-1/12 flex-col-center text-xs">{formatAmount(item.mrp)}</div>
+                                                    <div className="w-1/12 flex-col-center text-xs">{item.qty}</div>
+                                                    <div className="w-1/12 flex-col-center text-xs">{formatAmount(item.offer)}</div>
+                                                    <div className="w-[4%] flex-col-center">
+                                                        <IconButton size="sm" data-articleid={item.articleId} onClick={() => removeItem(item.articleId)}
+                                                            className="flex-col-center 
+                                                                rounded-full hover:border hover:border-blue" variant="text" color="blue">
+                                                            <IoClose size={18} />
+                                                        </IconButton>
+                                                    </div>
+                                                </div>
+                                            ))
+                                        }
+                                    </>) : ''
                                 }
-
-                                {/* <div
-                                    className="dc-item
-                                w-full flex items-center rounded-lg
-                                justify-between text-sm p-2 mb-1
-                                text-black border border-black">
-                                    <div className="w-auto flex-1 flex-col-center"></div>
-                                    <div className="w-2/12 flex-col-center">TOTAL</div>
-                                    <div className="w-3/12 flex items-center justify-end font-bold">50,000</div>
-                                </div> */}
 
                             </div>
 
