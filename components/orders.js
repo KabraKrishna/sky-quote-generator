@@ -135,7 +135,7 @@ export default function Orders(props) {
                         <span className="text-black font-medium ml-1">9767448038</span>
                     </span>
                     <span className="text-black pl-2 border-indigo-900">EMAIL.
-                        <span className="text-black font-medium ml-1">shravankabra14@gmail.com</span>
+                        <span className="text-black font-medium ml-1">skystudioz11@gmail.com</span>
                     </span>
                 </div>
             </div>
