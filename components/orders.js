@@ -135,11 +135,65 @@ export default function Orders(props) {
                         <span className="text-black font-medium ml-1">9767448038</span>
                     </span>
                     <span className="text-black pl-2 border-indigo-900">EMAIL.
-                        <span className="text-black font-medium ml-1">skystudioz11@gmail.com</span>
+                        <span className="text-black font-medium ml-1">shravankabra14@gmail.com</span>
                     </span>
                 </div>
             </div>
         </>)
+    }
+
+    const getLayoutHeaderWithCustomerDetails = () => {
+
+        return (<>
+            <div className="dc-header w-full flex items-center justify-between py-2 border-b border-black px-4">
+                <div className="w-3/12 h-full flex items-start justify-start">
+
+                    {
+
+                        isHafeleHeaderActive ? (<>
+                            <div className="w-auto flex-col-center">
+                                <img alt="SS_LOGO" src='/hafele-logo-srt.jpeg' className="w-[175px]" />
+                            </div>
+                        </>) : (<>
+                            <div className="w-auto flex-col-center">
+                                <img alt="SS_LOGO" src='/hindware-logo-new.png' className="w-[175px]" />
+                            </div>
+                        </>)
+                    }
+
+                </div>
+                <div className="w-9/12 dc-customer flex items-center justify-between divide-x px-4 py-1 text-black text-xs">
+
+                    <div className="w-auto flex-1 flex-col-center">
+                        <div className="w-full flex flex-row items-center justify-start">
+                            <div className="w-6 h-6 flex-center">
+                                <IoPerson size={12} />
+                            </div>
+                            <span className="ml-1">{company}</span>
+                        </div>
+
+                        <div className="w-full flex flex-row items-center justify-start">
+                            <div className="w-6 h-6 flex-center">
+                                <IoCall size={12} />
+                            </div>
+                            <span className="ml-1">{phone}</span>
+                        </div>
+                    </div>
+                    <div className="min-w-[8rem] flex-col-center text-xs border-indigo-900">
+                        <div className="w-full flex items-center justify-between">
+                            <span className="mx-2">Date:</span>
+                            <span className="font-medium ml-1">{moment(quoteDate).format('DD/MM/yyyy')}</span>
+                        </div>
+                        <div className="w-full flex items-center justify-between">
+                            <span className="mx-2">Attn :</span>
+                            <span className="font-medium ml-1">{attendedBy}</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </>)
+
     }
 
     const getLayoutHeader = () => {
@@ -147,8 +201,8 @@ export default function Orders(props) {
         return (<>
             <div className="dc-header w-full flex items-center justify-between py-2 border-b border-black px-4">
                 <div className="w-8/12 flex flex-col items-start">
-                    <span className="text-4xl font-serif font-extrabold text-black">Sky Studio</span>
-                    <div className="w-auto flex-col-center text-[10px]">
+                    {/* <span className="text-4xl font-serif font-extrabold text-black">Sky Studio</span> */}
+                    {/* <div className="w-auto flex-col-center text-[10px]">
                         <span className="my-1text-black">
                             Shop No. 13/14, Chetan Trade Center Opp. SFS School, Ch. Sambhajinagar - 431001
                         </span>
@@ -157,34 +211,33 @@ export default function Orders(props) {
                                 <span className="text-black font-medium ml-1">9767448038</span>
                             </span>
                             <span className="text-black pl-2 border-indigo-900">EMAIL.
-                                <span className="text-black font-medium ml-1">shravankabra14@gmail.com</span>
+                                <span className="text-black font-medium ml-1">skystudioz11@gmail.com</span>
                             </span>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
                 <div className="w-4/12 h-full flex items-start justify-end">
 
                     {
-                        showOldHeader ? (
-                            isHafeleHeaderActive ? (<>
-                                <div className="w-auto flex-col-center">
-                                    <img alt="SS_LOGO" src='/hafele-logo-new.png' className="w-[100px]" />
-                                </div>
-                            </>) : (<>
-                                <div className="w-auto flex-col-center">
-                                    <img alt="SS_LOGO" src='/hindware-logo-new.png' className="w-[100px]" />
-                                </div>
-                            </>)
-                        ) : (<>
-                            <img alt="SS_LOGO" src='/hafele-logo-new.png' className="w-[100px] mr-2" />
-                            <img alt="SS_LOGO" src='/hindware-logo-new.png' className="w-[100px]" />
+
+                        isHafeleHeaderActive ? (<>
+                            <div className="w-auto flex-col-center">
+                                <img alt="SS_LOGO" src='/hafele-logo-srt.jpeg' className="w-[100px]" />
+                            </div>
+                        </>) : (<>
+                            <div className="w-auto flex-col-center">
+                                <img alt="SS_LOGO" src='/hindware-logo-new.png' className="w-[100px]" />
+                            </div>
                         </>)
+
+                        // showOldHeader ? (
+
+                        // ) : (<>
+                        //     <img alt="SS_LOGO" src='/hafele-logo-new.png' className="w-[100px] mr-2" />
+                        //     <img alt="SS_LOGO" src='/hindware-logo-new.png' className="w-[100px]" />
+                        // </>)
                     }
 
-
-                    {/* {
-                        
-                    } */}
                 </div>
             </div>
         </>)
@@ -210,11 +263,11 @@ export default function Orders(props) {
 
                     {/* Header */}
 
-                    {getLayoutHeader()}
+                    {getLayoutHeaderWithCustomerDetails()}
 
                     {/* Customer Details */}
 
-                    <div className="dc-customer w-full flex items-center justify-between divide-x px-4 py-1 text-black text-xs">
+                    {/* <div className="dc-customer w-full flex items-center justify-between divide-x px-4 py-1 text-black text-xs">
 
                         <div className="w-auto flex-1 flex-col-center">
                             <div className="w-full flex flex-row items-center justify-start">
@@ -241,7 +294,7 @@ export default function Orders(props) {
                                 <span className="font-medium ml-1">{attendedBy}</span>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
 
                     {/* bill details */}
                     <div className="dc-content w-full flex flex-col items-center px-4 py-2">
