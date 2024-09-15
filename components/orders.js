@@ -464,7 +464,7 @@ export default function Orders(props) {
                         </div>
                     </div> */}
 
-                    <div className="dc-item dc-footer-sign  w-full px-4 py-2 text-black flex flex-row items-center justify-between border-t border-black">
+                    {/* <div className="dc-item dc-footer-sign  w-full px-4 py-2 text-black flex flex-row items-center justify-between border-t border-black">
                         <div className="flex flex-row items-center justify-between">
 
                             <div className="flex-col-center border-r pr-2 mr-2 border-black text-[9px]">
@@ -497,30 +497,6 @@ export default function Orders(props) {
                                     <span>Ch. SambhajiNagar</span>
                                 </div>
 
-                                {/* <div className="flex items-center justify-between w-[250px]">
-                                    <span>PAY To:</span>
-                                    <span>SKY STUDIO</span>
-                                </div>
-
-                                <div className="flex items-center justify-between w-[250px]">
-                                    <span>Bank Name:</span>
-                                    <span>AU Small Finance</span>
-                                </div>
-
-                                <div className="flex items-center justify-between w-[250px]">
-                                    <span>A/C NO:</span>
-                                    <span>2221235745543179</span>
-                                </div>
-
-                                <div className="flex items-center justify-between w-[250px]">
-                                    <span>IFSC:</span>
-                                    <span>AUBL0002357</span>
-                                </div>
-
-                                <div className="flex items-center justify-between w-[250px]">
-                                    <span>Branch:</span>
-                                    <span>Ch. SambhajiNagar</span>
-                                </div> */}
                             </div>
                         </div>
                         <div className="flex flex-col items-end">
@@ -528,7 +504,7 @@ export default function Orders(props) {
                             <span className="text-sx mt-10">Signature</span>
                         </div>
 
-                    </div>
+                    </div> */}
 
                 </div>
 
